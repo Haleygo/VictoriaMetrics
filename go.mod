@@ -39,7 +39,10 @@ require (
 	gopkg.in/yaml.v2 v2.4.0
 )
 
-require github.com/bmatcuk/doublestar/v4 v4.6.0
+require (
+	github.com/bmatcuk/doublestar/v4 v4.6.0
+	github.com/prometheus/common v0.43.0
+)
 
 require (
 	cloud.google.com/go v0.110.2 // indirect
@@ -94,7 +97,6 @@ require (
 	github.com/pmezard/go-difflib v1.0.0 // indirect
 	github.com/prometheus/client_golang v1.15.1 // indirect
 	github.com/prometheus/client_model v0.4.0 // indirect
-	github.com/prometheus/common v0.43.0 // indirect
 	github.com/prometheus/common/sigv4 v0.1.0 // indirect
 	github.com/prometheus/procfs v0.9.0 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect

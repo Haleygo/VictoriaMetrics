@@ -8,7 +8,7 @@ import (
 	"github.com/VictoriaMetrics/VictoriaMetrics/app/vlinsert/jsonline"
 )
 
-// Init initializes vlinsert
+// Init initializes vlinsertafd
 func Init() {
 }
 

@@ -190,7 +190,8 @@ func SearchLabelNamesWithFiltersOnTimeRange(qt *querytracer.Tracer, tfss []*stor
 
 // SearchLabelValuesWithFiltersOnTimeRange searches for label values for the given labelName, tfss and tr.
 func SearchLabelValuesWithFiltersOnTimeRange(qt *querytracer.Tracer, labelName string, tfss []*storage.TagFilters,
-	tr storage.TimeRange, maxLabelValues, maxMetrics int, deadline uint64) ([]string, error) {
+	tr storage.TimeRange, maxLabelValues, maxMetrics int, deadline uint64,
+) ([]string, error) {
 	WG.Add(1)
 	labelValues, err := Storage.SearchLabelValuesWithFiltersOnTimeRange(qt, labelName, tfss, tr, maxLabelValues, maxMetrics, deadline)
 	WG.Done()

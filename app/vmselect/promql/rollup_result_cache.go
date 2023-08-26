@@ -42,6 +42,9 @@ func ResetRollupResultCacheIfNeeded(mrs []storage.MetricRow) {
 		rollupResultResetMetricRowSample.Store(&storage.MetricRow{})
 		go checkRollupResultCacheReset()
 	})
+
+	// off := 100 * 365 * 24 * time.Hour
+	// cacheTimestampOffset = &off
 	minTimestamp := int64(fasttime.UnixTimestamp()*1000) - cacheTimestampOffset.Milliseconds() + checkRollupResultCacheResetInterval.Milliseconds()
 	needCacheReset := false
 	for i := range mrs {
@@ -74,9 +77,11 @@ func checkRollupResultCacheReset() {
 
 const checkRollupResultCacheResetInterval = 5 * time.Second
 
-var needRollupResultCacheReset uint32
-var checkRollupResultCacheResetOnce sync.Once
-var rollupResultResetMetricRowSample atomic.Value
+var (
+	needRollupResultCacheReset       uint32
+	checkRollupResultCacheResetOnce  sync.Once
+	rollupResultResetMetricRowSample atomic.Value
+)
 
 var rollupResultCacheV = &rollupResultCache{
 	c: workingsetcache.New(1024 * 1024), // This is a cache for testing.

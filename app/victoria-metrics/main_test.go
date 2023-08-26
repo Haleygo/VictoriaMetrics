@@ -309,6 +309,7 @@ func readIn(readFor string, t *testing.T, insertTime time.Time) []test {
 		s.noError(err)
 		item := test{}
 		s.noError(json.Unmarshal(b, &item))
+		// 替换时间模版用的{TIME_*}
 		for i := range item.Data {
 			item.Data[i] = testutil.PopulateTimeTplString(item.Data[i], insertTime)
 		}
@@ -360,6 +361,7 @@ func httpReadMetrics(t *testing.T, address, query string) []Metric {
 	}
 	return rows
 }
+
 func httpReadStruct(t *testing.T, address, query string, dst interface{}) {
 	t.Helper()
 	s := newSuite(t)
